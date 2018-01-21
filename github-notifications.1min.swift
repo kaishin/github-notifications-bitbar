@@ -11,8 +11,12 @@
 
 import Foundation
 
-// Put the GitHub API token key here. More info on how to generate a new one: https://github.com/blog/1509-personal-api-tokens
+// Paste your GitHub API token key here.
+// More info on how to generate a new one: https://github.com/blog/1509-personal-api-tokens
 let GitHubAPIKey = ""
+let displayCount = false
+
+// Do not edit below this line unless you know what you are doing.
 
 #if swift(>=4.0)
   struct GitHubNotification: Codable {
@@ -109,17 +113,6 @@ let GitHubAPIKey = ""
     }
   }
 
-  enum ANSIColor: String {
-    case black = "\u{001B}[0;30m"
-    case red = "\u{001B}[0;31m"
-    case green = "\u{001B}[0;32m"
-    case yellow = "\u{001B}[0;33m"
-    case blue = "\u{001B}[0;34m"
-    case magenta = "\u{001B}[0;35m"
-    case cyan = "\u{001B}[0;36m"
-    case white = "\u{001B}[0;37m"
-  }
-
   func printOutput(_ notifications: [GitHubNotification]) {
     let repositoryNames = notifications.reduce([String]()) { names, notification in
       let repoName = notification.repository.name
@@ -133,7 +126,7 @@ let GitHubAPIKey = ""
 
     let groupedNotification = Dictionary(grouping: notifications, by: { $0.repository.name })
 
-    print(notifications.count > 0 ? ANSIColor.white.rawValue + String(notifications.count) + " " + ANSIColor.blue.rawValue + newNotificationsIcon : allReadIcon)
+    print(notifications.count > 0 ? newNotificationsIcon(displayCount ? notifications.count : nil) : allReadIcon)
     print("---")
     print("\(notifications.count) unread notification\(notifications.count == 1 ? "" : "s") | href=https://github.com/notifications")
     print("View Notifications on GitHub... | href=https://github.com/notifications alternate=true")
@@ -159,7 +152,12 @@ let GitHubAPIKey = ""
   }
 
 let allReadIcon = "○| color=#585E5E size=13"
-let newNotificationsIcon = "●| color=#2987F6 size=13"
+
+func newNotificationsIcon(_ count: Int? = nil) -> String {
+  let countString: String = count == nil ? "" : String(describing: count!)
+  return  "● \(countString)| color=#2079F2 size=13"
+}
+
 
 let config = URLSessionConfiguration.default
 config.httpAdditionalHeaders = ["Authorization": "token \(GitHubAPIKey)", "Accept": "application/json"]
@@ -203,4 +201,3 @@ requestSemaphore.wait()
   print("---")
   print("✕ Swift 4 is required.")
 #endif
-
