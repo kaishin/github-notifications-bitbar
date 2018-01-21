@@ -13,7 +13,7 @@ A plugin for [BitBar](https://getbitbar.com) (free) to display all your GitHub n
 # Install
 
 * _Option 1_: Drop the `github-notifications.1m.swift` file in your BitBar plugin directly.
-* _Option 2_: Copy, paste, then open the following URL your browser: `bitbar://openPlugin?title=Github%20Notifications&src=https://raw.githubusercontent.com/kaishin/github-notifications-bitbar/master/github-notifications.1min.swift`
+* _Option 2_: Copy, paste, then open the following URL in your browser: `bitbar://openPlugin?title=Github%20Notifications&src=https://raw.githubusercontent.com/kaishin/github-notifications-bitbar/master/github-notifications.1min.swift`
 
 ## Settings
 
