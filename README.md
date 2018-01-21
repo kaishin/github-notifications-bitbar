@@ -19,11 +19,11 @@ A plugin for [BitBar](https://getbitbar.com) (free) to display all your GitHub n
 
 Once you have an API key, open the script installed in your plugin directory and set it in the `GitHubAPIKey` variable.
 
-You can also choose to display a badge by setting `displayCount` to `true`.
+You can also choose to display a badge by setting `showCountBadge` to `true`.
 
 ```swift
 let GitHubAPIKey = "" // Set it to use your own GitHub API token key.
-var displayCount = false // Show the notification badge in the menu bar.
+var showCountBadge = false // Show the notification badge in the menu bar.
 ```
 
 If you want to change the update frequency, you can change the `1m` in the filename to your preferred duration (10s, 5m, 1h, etc).

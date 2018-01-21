@@ -14,7 +14,7 @@ import Foundation
 // Paste your GitHub API token key here.
 // More info on how to generate a new one: https://github.com/blog/1509-personal-api-tokens
 let GitHubAPIKey = ""
-let displayCount = false
+let showCountBadge = false
 
 // Do not edit below this line unless you know what you are doing.
 
@@ -126,7 +126,7 @@ let displayCount = false
 
     let groupedNotification = Dictionary(grouping: notifications, by: { $0.repository.name })
 
-    print(notifications.count > 0 ? newNotificationsIcon(displayCount ? notifications.count : nil) : allReadIcon)
+    print(notifications.count > 0 ? newNotificationsIcon(showCountBadge ? notifications.count : nil) : allReadIcon)
     print("---")
     print("\(notifications.count) unread notification\(notifications.count == 1 ? "" : "s") | href=https://github.com/notifications")
     print("View Notifications on GitHub... | href=https://github.com/notifications alternate=true")
