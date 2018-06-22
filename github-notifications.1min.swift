@@ -194,7 +194,14 @@ let task = session.dataTask(with: url, completionHandler: { (data, response, err
   }
 })
 
-task.resume()
+if GitHubAPIKey.isEmpty {
+  print("⚠️")
+  print("---")
+  print("The GitHub API key is missing. Please add it in the script file.")
+} else {
+  task.resume()
+}
+
 requestSemaphore.wait()
 
 #else
