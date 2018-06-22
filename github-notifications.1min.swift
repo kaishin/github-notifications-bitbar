@@ -42,6 +42,7 @@ let showCountBadge = false
       case commit = "Commit"
       case release = "Release"
       case invitation = "RepositoryInvitation"
+      case vulnerabilityAlert = "RepositoryVulnerabilityAlert"
     }
 
     struct Subject: Codable {
@@ -74,7 +75,7 @@ let showCountBadge = false
 
       var icon: String {
         switch type {
-        case .issue:
+        case .issue, .vulnerabilityAlert:
           return "iVBORw0KGgoAAAANSUhEUgAAABUAAAAYCAYAAAAVibZIAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAGuSURBVDiNvdVNb01RFAbgp7eE9KZNGJCSa9iUxMcfICHEsONGxITowEjMEGOJgUTiFxhIfYwRNOFHKGY+rjAgNIqQHoO9Tu51c/a5pxre5EzW2u971tp77XfzDzAyJN/GAXSwCZ/wGk/wdbU/24e7+Iai4lvGHextUul6XMUcWviOx1jEB2zBThzERqzgOs7iZ67VhajkM85jPNPJOC7gS6xfCP4faEW7BZ5jKiM2iGm8CN5tA53PReIttlWQ+/dzENvRjdypMtjGuwgeylRUJwpHItcNPccicC9DaCIKDyI/28JMBG/UEJqg5M+QDqaQ9iaHJpV2Ir8IS/iF0TWKjobOUmvIwtWgHKeVddLJT2ESbzKEyw1EJ6VquzAvVXt8TXVyInRu0hup+zWEJnv6MPKzpGEtb8ThvxQ9qncjx8rgab0bUTVadaIdvRt5sj8xIvljIRnEdKaiQezCy+DNqzD9tuSdhTS7FzGREZvApVhX4JE+66sy6Ss4I9nhD8krn+E9tuqZ9AbJpK/hnDT4tdgj+eOy/HNyC7uryMMevjHsxw5sxke8wtMQ/n/4DYAHhwJg3MAfAAAAAElFTkSuQmCC"
         case .commit:
           return "iVBORw0KGgoAAAANSUhEUgAAABUAAAAYCAYAAAAVibZIAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAADrSURBVDiN7dNNSsNQFMXxn0HX4MQlWFyIFLS6AAUnYhEpgmtw7tQPdAsuQJeibRW3oGI6eC/4EhNtOpT84cHlhHOSd+8NHR1NbOAOU3xiglv0Fg08xgfymvOOo7aBu5WQKR7wkmhfGMwbuIJxYjxBFp9lGEU9xzOWqwFLOKtoaxjG+hIHNS++wn6sL4Rel6jrWXE2G27T/82XNZjSm7TREfpxXtFWsRfrAe5rfNtJfYO3Pz7ux6BGyoM69T2oJzWDamInMebCKj3iVXmltuYNLBgKS960/IdtAwt6Qs8mwt81xjXWFw3s+O/MAM4WTupM6nylAAAAAElFTkSuQmCC"
@@ -199,5 +200,5 @@ requestSemaphore.wait()
 #else
   print("⚠️")
   print("---")
-  print("✕ Swift 4 is required.")
+  print("✕ Swift 4+ is required.")
 #endif
