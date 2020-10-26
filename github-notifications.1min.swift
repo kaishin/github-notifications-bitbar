@@ -131,6 +131,7 @@ let showCountBadge = false
     print("---")
     print("\(notifications.count) unread notification\(notifications.count == 1 ? "" : "s") | href=https://github.com/notifications")
     print("View Notifications on GitHub... | href=https://github.com/notifications alternate=true")
+    print("Refresh | href=bitbar://refreshPlugin?name=github-notifications.?*.swift")
     print("---")
 
     for repositoryName in repositoryNames {
